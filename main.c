@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	else if(menu1 == 2){
-		printf("oi");
+		printf("oi, como vai?");
 	}
 	else if(menu1 == 3){
 		system("cls");
