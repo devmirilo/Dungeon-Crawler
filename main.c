@@ -2,6 +2,21 @@
 #include <stdlib.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
+void menu(){
+	int menu1;
+	printf("1) Jogar\n2) Tutorial\n3) Sair\n");
+	scanf("%d", &menu1);
+	if(menu1 == 1){
+		jogar();
+	}
+	if(menu1 == 2){
+		tutorial();
+		menu();
+	}
+	if(menu1 == 3){
+		sair();
+	}
+}
 void tutorial(){
 	printf("Ola, Bravo Aventureiro, Hoje voce ira passar por um nova aventura. O jogo consiste em pegar a chave '@', e passar pelas portas 'D', caso a porta seja um '=', quer dizer que a porta esta aberta, podendo passar sem a chave!, a movimentacao consiste em usar 'w' 'a' 's' 'd', e pressione 'q' para sair ");
 	getch();
@@ -89,31 +104,18 @@ void jogar(){
 				system("cls");
 				printf("Voce saiu.");
 				getch();
+				system("cls");
 				menu();
 			}
 			mapa1[x][y] = '&';
 		}
 	}
 void sair(){
-	printf("Voce saiu. Por favor volte novamente.");
+	printf("Voce saiu. Por favor volte novamente.\n");
 	getch();
 	return 0;
 }
-void menu(){
-	int menu1;
-	printf("1) Jogar\n2) Tutorial\n3) Sair\n");
-	scanf("%d", &menu1);
-	if(menu1 == 1){
-		jogar();
-	}
-	else if(menu1 == 2){
-		tutorial();
-		menu();
-	}
-	else{
-		return 0;
-	}
-}
 int main(int argc, char *argv[]) {
 	menu();
+	return 0;
 }
