@@ -2,10 +2,18 @@
 #include <stdlib.h>
 #include <conio.h>
 
+
+// Variáveis para controlar se o jogador possui as chaves
+int chave1_obtida = 0; // Inicialmente o jogador não possui a chave 1
+int chave2_obtida = 0; // Inicialmente o jogador não possui a chave 2
+int chave3_obtida = 0; // Inicialmente o jogador não possui a chave 3
+// Variáveis para controlar se as portas estão trancadas
+int porta1_trancada = 1; // Porta 1 inicialmente trancada
+int porta2_trancada = 1; // Porta 2 inicialmente trancada
+int porta3_trancada = 1; // Porta 3 inicialmente trancada
 //Voids
 void tutorial();
 void jogar();
-void sair();
 
 //Menu Inicial
 void menu(){
@@ -20,8 +28,8 @@ void menu(){
 			tutorial();
 		}
 		else if(menu1 == 3){
-			sair();
-			return;
+			printf("Voce saiu. Por favor volte novamente outra hora.\n");
+			exit(0);
 		}
 		else{
 			printf("Opcao invalida. Tente novamente!\n");
@@ -75,21 +83,17 @@ void jogar(){
 		//Posição inicial do jogador
 		int x = 8, y = 8;
 		//Colocar os elementos no mapa
-		char chave1, chave2, chave3, porta1, porta2, porta3;
-		mapa1[1][3] = 'D';
-		mapa1[2][1] = '@';
-		mapa1[6][2] = 'D';
-		mapa1[1][8] = '@';
-		mapa1[3][7] = '=';
-		mapa1[y][x] = '&';
-		mapa1[9][1] = 'D';
-		mapa1[8][2] = '@';
-		chave1 = mapa1[1][8];
-		chave2 = mapa1[2][1];
-		chave3 = mapa1[8][2];
-		porta1 = mapa1[1][3];
-		porta2 = mapa1[6][2];
-		porta3 = mapa1[9][1];
+		char chave1 = '@', chave2 = '@', chave3 = '@', porta1 = 'D', porta2 = 'D', porta3 = 'D';
+
+    	mapa1[1][3] = porta1;
+   		mapa1[1][8] = chave1;
+    	mapa1[6][2] = porta2;
+    	mapa1[2][1] = chave2;
+    	mapa1[3][7] = '=';
+    	mapa1[x][y] = '&';
+    	mapa1[9][1] = porta3;
+    	mapa1[8][2] = chave3;
+
 		while(1){
 			for(i = 0; i < 10; i ++){
 				for(j = 0; j < 10; j ++){
@@ -98,37 +102,89 @@ void jogar(){
 				printf("\n");
 			}
 			printf("\n\nPressione 'q' para sair.\n");
-			int ch = getch();
+			int mov = getch();
 			//Movimentação do jogador
-			if(ch == 'w'){
+			if(mov == 'w'){
 				if(mapa1[x-1][y] != '*'){
-				 x--;
-				mapa1[x+1][y] = ' ';	
+					if(((mapa1[x-1][y] == porta1) && (chave1_obtida == 0)) ||
+					   ((mapa1[x-1][y] == porta2) && (chave2_obtida == 0)) || 
+					   ((mapa1[x-1][y] == porta3) && (chave3_obtida == 0))) {
+						printf("A porta esta trancada, ache a chave respectiva para ela");
+					}
+					else if (((mapa1[x-1][y] == porta1) && (chave1_obtida == 1)) ||
+					 		 ((mapa1[x-1][y] == porta2) && (chave2_obtida == 1)) ||
+					  		 ((mapa1[x-1][y] == porta3) && (chave3_obtida == 1))) {
+						x--;
+						mapa1[x+1][y] = ' ';
+					}
+					else{
+						x--;
+						mapa1[x+1][y] = ' ';
+					}
 				}
 				system("cls");
 			}
-			else if(ch == 's'){
+			else if(mov == 's'){
 				if(mapa1[x+1][y] != '*'){
-				x++;
-				mapa1[x-1][y] = ' ';
+					if (((mapa1[x+1][y] == porta1) && (chave1_obtida == 0)) || 
+						((mapa1[x+1][y] == porta2) && (chave2_obtida == 0)) || 
+						((mapa1[x+1][y] == porta3) && (chave3_obtida == 0))){
+						printf("A porta esta trancada, ache a chave respectiva para ela");
+					}
+					else if(((mapa1[x+1][y] == porta1) && (chave1_obtida == 1)) ||
+					 		((mapa1[x+1][y] == porta2) && (chave2_obtida == 1)) || 
+					 		((mapa1[x+1][y] == porta3) && (chave3_obtida == 1))){
+						x++;
+						mapa1[x-1][y] = ' ';
+					}
+					else{
+						x++;
+						mapa1[x-1][y] = ' ';
+					}
 				}
 				system("cls");	
 			}
-			else if(ch == 'a'){
+			else if(mov == 'a'){
 				if (mapa1[x][y-1] != '*'){
-				y--;
-				mapa1[x][y+1] = ' ';
+					if (((mapa1[x][y-1] == porta1) && (chave1_obtida == 0)) || 
+						((mapa1[x][y-1] == porta2) && (chave2_obtida == 0)) || 
+						((mapa1[x][y-1] == porta3) && (chave3_obtida == 0))){
+						printf("A porta esta trancada, ache a chave respectiva para ela");
+					}
+					else if(((mapa1[x][y-1] == porta1) && (chave1_obtida == 1)) || 
+							((mapa1[x][y-1] == porta2) && (chave2_obtida == 1)) || 
+							((mapa1[x][y-1] == porta3) && (chave3_obtida == 1))){
+						y--;
+						mapa1[x][y+1] = ' ';
+					}
+					else{
+						y--;
+						mapa1[x][y+1] = ' ';
+					}
 				}
 				system("cls");
-			}
-			else if(ch == 'd'){
+			}  
+			else if(mov == 'd'){
 				if(mapa1[x][y+1] != '*'){
-				y++;
-				mapa1[x][y-1] = ' ';
+					if (((mapa1[x][y+1] == porta1) && (chave1_obtida == 0)) || 
+						((mapa1[x][y+1] == porta2) && (chave2_obtida == 0)) || 
+						((mapa1[x][y+1] == porta3) && (chave3_obtida == 0))){
+						printf("A porta esta trancada, ache a chave respectiva para ela");
+					}
+					else if(((mapa1[x][y+1] == porta1) && (chave1_obtida == 1)) || 
+							((mapa1[x][y+1] == porta2) && (chave2_obtida == 1)) || 
+							((mapa1[x][y+1] == porta3) && (chave3_obtida == 1))){
+						y++;
+						mapa1[x][y-1] = ' ';
+					}
+					else{
+						y++;
+						mapa1[x][y-1] = ' ';	
+					}
 				}
 				system("cls");
 			}
-			else if(ch == 'q'){
+			else if(mov == 'q'){
 				printf("Deseja sair do jogo? (S/N): ");
         		char resposta;
         		scanf(" %c", &resposta);
@@ -140,13 +196,21 @@ void jogar(){
             		return;
 				}
 			}
+			if (mapa1[x][y] == chave1){
+    			chave1_obtida = 1;
+    			mapa1[x][y] = ' '; // Remover a chave do mapa após o jogador pegá-la
+			}
+			else if (mapa1[x][y] == chave2){
+   				chave2_obtida = 1;
+    			mapa1[x][y] = ' '; // Remover a chave do mapa após o jogador pegá-la
+			}
+			else if (mapa1[x][y] == chave3){
+    			chave3_obtida = 1;
+    			mapa1[x][y] = ' '; // Remover a chave do mapa após o jogador pegá-la
+			}
 				mapa1[x][y] = '&';
 		}
 	}
-void sair(){
-	printf("Voce saiu. Por favor volte novamente outra hora.\n");
-	exit(0);
-}
 int main() {
 	menu();
 	return 0;
