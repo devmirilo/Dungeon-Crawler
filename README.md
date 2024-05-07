@@ -33,6 +33,6 @@ Vitória: Texto elogiando o jogador por ter conseguido terminar o jogo, depois d
 Derrota: Texto caçoando o jogador, depois dessa tela o jogador volta para o Menu Principal. Essa tela só pode ser acessada quando o jogador perde em uma fase.
 # Participantes
 ## Murilo Pantoja Carneiro
-[![github murilo](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/devmirilo)]
+[![github murilo](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/devmirilo)
 ## Pedro Lyra
-[![git hub pedro](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/perdolyra18)]
+[![git hub pedro](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/perdolyra18)
