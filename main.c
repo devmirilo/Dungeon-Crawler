@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-
+#include <time.h>
 
 // Variáveis para controlar se o jogador possui as chaves
 int chave1_obtida = 0; // Inicialmente o jogador não possui a chave 1
@@ -19,6 +19,7 @@ void jogar();
 void menu(){
 	int menu1;
 	do{
+		system("color c");
 		printf("1) Jogar\n2) Tutorial\n3) Sair\n");
 		scanf("%d", &menu1);
 		if(menu1 == 1){
@@ -38,10 +39,37 @@ void menu(){
 }
 //Tutorial
 void tutorial(){
-	printf("Ola, Bravo Aventureiro, Hoje voce ira passar por um nova aventura, que consiste em 3 fases.\nO jogo consiste em pegar a chave '@', e passar pelas portas 'D' e '=', caso a porta seja um '=', quer dizer que a porta esta aberta. A movimentacao consiste em usar 'w' 'a' 's' 'd' e pressionar 'q' para sair.\n");
-	printf("Pressione qualquer tecla para voltar ao menu.\n");
+	system("color a");
+	system("cls");
+	printf("\n\t\t   ---------------------------------------------------####----------------------------------------------------------\n"
+                   "\t\t   |   O jogo eh do estilo aventura/puzzle onde o objetivo eh o passar de tres fases. Em cada fase o jogador deve  |\n"
+                   "\t\t   |   se passar de tres fases. Em cada fase o jogador deve se movimentar para pegar uma chave para abrir a porta  |\n"
+                   "\t\t   |    fechada.                                                                                                   |\n"
+                   "\t\t   ---------------------------------------------------####----------------------------------------------------------\n"
+                   "\t\t   |   O jogador possui os seguintes comandos:                                                                     |\n"
+                   "\t\t   |   O: Simbolo que representa o botao(abre passagens secretas)                                                  |\n"
+                   "\t\t   |   W: O jogador movimenta uma unidade para cima.                                                               |\n"
+                   "\t\t   |   A: O jogador movimenta uma unidade para a esquerda.                                                         |\n"
+                   "\t\t   |   S: O jogador movimenta uma unidade para baixo.                                                              |\n"
+                   "\t\t   |   D: O jogador movimenta uma unidade para direita.                                                            |\n"
+                   "\t\t   |   I: O jogador interage com o objeto que ele estiver em cima.                                                 |\n"
+                   "\t\t   ---------------------------------------------------####----------------------------------------------------------\n"
+                   "\t\t   |   @: Simbolo que representa o jogador.                                                                        |\n"
+                   "\t\t   |   #: Simbolo que representa uma parede, o jogador nao pode passar pela parede.                                |\n"
+                   "\t\t   |   &: Simbolo que representa a chave para abrir a porta para finalizar a fase,                                 |\n"
+                   "\t\t   |   a porta abre no momento em que o jogador interage com a chave.                                              |\n"
+                   "\t\t   |   D: Simbolo que representa uma porta fechada.                                                                |\n"
+                   "\t\t   |   =: Simbolo que representa uma porta que foi aberta quando o jogador interagiu com a chave.                  |\n"
+                   "\t\t   |   *: Simbolo que representa um espinho(tira uma vida).                                                        |\n"
+                   "\t\t   |   >: simbolo que representa um teletransporte.O teletransporte sempre deve                                    |\n"
+                   "\t\t   |   vir em par, quando o jogador toca em um ele e transportado para outro e vice-versa.                         |\n"
+                   "\t\t   |   O guardiao do portal, jogue uma rodada e derrote o oponente para passar pelo portal vencer o jogo.          |\n"
+                   "\t\t   ---------------------------------------------------####----------------------------------------------------------\n"
+                   "\t\t   |     O JOGADOR POSSUI UM TOTAL DE 3 VIDAS, SE PERDER TODAS AS VIDAS O JOGO VOLTA PARA O MENU INICIAL.          |\n"
+                   "\t\t   --------------------------------------------------####----------------------------------------------------------\n");
 	getch();
 	system("cls");
+	system("color c");
 }
 //Jogo
 void jogar(){
@@ -80,11 +108,16 @@ void jogar(){
 				}
 			}
 		}
+		
+		
 		//Posição inicial do jogador
 		int x = 8, y = 8;
+		//Posição inicial do monstro
+		int xm = 5, ym = 4;
 		//Colocar os elementos no mapa
 		char chave1 = '@', chave2 = '@', chave3 = '@', porta1 = 'D', porta2 = 'D', porta3 = 'D';
-
+		char monstro = 'X';
+		mapa1[xm][ym] = monstro;
     	mapa1[1][3] = porta1;
    		mapa1[1][8] = chave1;
     	mapa1[6][2] = porta2;
@@ -101,11 +134,44 @@ void jogar(){
 				}
 				printf("\n");
 			}
+			// Monstro nivel 1
+			srand(time(NULL));
+			mapa1[xm][ym] = monstro;
+			int o;
+			o = rand()%4;
+			if(o == 0){
+				if(mapa1[xm - 1][ym] != '*' && mapa1[xm - 1][ym] != 'D' && mapa1[xm - 1][ym] != '=' & mapa1[xm - 1][ym] != 'h'){
+					xm--;
+					mapa1[xm + 1][ym] = ' ';
+				}
+			}
+			if(o == 1){
+				if(mapa1[xm + 1][ym] != '*' && mapa1[xm + 1][ym] != 'D' && mapa1[xm + 1][ym] != '=' && mapa1[xm + 1][ym] != 'h'){
+					xm++;
+					mapa1[xm - 1][ym] = ' ';
+				}
+			}
+			if(o == 2){
+				if(mapa1[xm][ym - 1] != '*' && mapa1[xm][ym - 1] != 'D' && mapa1[xm][ym - 1] != '=' && mapa1[xm][ym - 1] != 'h'){
+					ym--;
+					mapa1[xm][ym + 1] = ' ';
+				}
+			}
+			if(o == 3){
+				if(mapa1[xm][ym + 1] != '*' && mapa1[xm][ym + 1] != 'D' && mapa1[xm][ym + 1] != '=' && mapa1[xm][ym + 1] != 'h'){
+					ym++;
+					mapa1[xm][ym - 1] = ' ';
+				}
+			}
 			printf("\n\nPressione 'q' para sair.\n");
+			int vida = 3;
 			int mov = getch();
 			//Movimentação do jogador
 			if(mov == 'w'){
 				if(mapa1[x-1][y] != '*'){
+					if(mapa1[x][y] == mapa1[xm][ym]){
+						vida--;
+					}
 					if(((mapa1[x-1][y] == porta1) && (chave1_obtida == 0)) ||
 					   ((mapa1[x-1][y] == porta2) && (chave2_obtida == 0)) || 
 					   ((mapa1[x-1][y] == porta3) && (chave3_obtida == 0))) {
@@ -121,11 +187,17 @@ void jogar(){
 						x--;
 						mapa1[x+1][y] = ' ';
 					}
+					if((((mapa1[x+1][y] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x+1][y] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x+1][y] == mapa1[8][2]) && chave3_obtida == 0)) ){
+						mapa1[x+1][y] = '@';
+					}
 				}
 				system("cls");
 			}
 			else if(mov == 's'){
 				if(mapa1[x+1][y] != '*'){
+					if(mapa1[x][y] == mapa1[xm][ym]){
+						vida--;
+					}
 					if (((mapa1[x+1][y] == porta1) && (chave1_obtida == 0)) || 
 						((mapa1[x+1][y] == porta2) && (chave2_obtida == 0)) || 
 						((mapa1[x+1][y] == porta3) && (chave3_obtida == 0))){
@@ -141,10 +213,16 @@ void jogar(){
 						x++;
 						mapa1[x-1][y] = ' ';
 					}
+					if((((mapa1[x-1][y] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x-1][y] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x-1][y] == mapa1[8][2]) && chave3_obtida == 0)) ){
+						mapa1[x-1][y] = '@';
+					}
 				}
 				system("cls");	
 			}
 			else if(mov == 'a'){
+				if(mapa1[x][y] == mapa1[xm][ym]){
+						vida--;
+					}
 				if (mapa1[x][y-1] != '*'){
 					if (((mapa1[x][y-1] == porta1) && (chave1_obtida == 0)) || 
 						((mapa1[x][y-1] == porta2) && (chave2_obtida == 0)) || 
@@ -161,10 +239,16 @@ void jogar(){
 						y--;
 						mapa1[x][y+1] = ' ';
 					}
+					if((((mapa1[x][y+1] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x][y+1] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x][y+1] == mapa1[8][2]) && chave3_obtida == 0)) ){
+						mapa1[x][y+1] = '@';
+					}
 				}
 				system("cls");
 			}  
 			else if(mov == 'd'){
+				if(mapa1[x][y] == mapa1[xm][ym]){
+						vida--;
+					}
 				if(mapa1[x][y+1] != '*'){
 					if (((mapa1[x][y+1] == porta1) && (chave1_obtida == 0)) || 
 						((mapa1[x][y+1] == porta2) && (chave2_obtida == 0)) || 
@@ -181,6 +265,9 @@ void jogar(){
 						y++;
 						mapa1[x][y-1] = ' ';	
 					}
+					if((((mapa1[x][y-1] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x][y-1] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x][y-1] == mapa1[8][2]) && chave3_obtida == 0)) ){
+						mapa1[x][y-1] = '@';
+					}
 				}
 				system("cls");
 			}
@@ -196,19 +283,30 @@ void jogar(){
             		return;
 				}
 			}
-			if (mapa1[x][y] == chave1){
-    			chave1_obtida = 1;
-    			mapa1[x][y] = ' '; // Remover a chave do mapa após o jogador pegá-la
+			else if(mov == 't' && (x == 1 && y == 8)){
+				mapa1[1][8] = " ";
+				mapa1[1][3] = "=";
+				chave1_obtida = 1;
+				system("cls");
 			}
-			else if (mapa1[x][y] == chave2){
-   				chave2_obtida = 1;
-    			mapa1[x][y] = ' '; // Remover a chave do mapa após o jogador pegá-la
+			else if(mov == 't' && (x == 2 && y == 1)){
+				mapa1[2][1] = " ";
+				mapa1[6][2] = "=";
+				chave2_obtida = 1;
+				system("cls");
 			}
-			else if (mapa1[x][y] == chave3){
-    			chave3_obtida = 1;
-    			mapa1[x][y] = ' '; // Remover a chave do mapa após o jogador pegá-la
+			else if(mov == 't' && (x == 8 && y == 2)){
+				mapa1[8][2] = " ";
+				mapa1[9][1] = "=";
+				chave3_obtida = 1;
+				system("cls");
+			}
+			else if (vida == 0){
+				printf("Voce morreu.");
+				return;
 			}
 				mapa1[x][y] = '&';
+				mapa1[xm][ym] = monstro;
 		}
 	}
 int main() {
