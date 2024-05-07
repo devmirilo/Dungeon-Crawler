@@ -31,8 +31,8 @@ Fase 2: A Fase 2 é inicializada quando o jogador termina a Fase 1;
 Fase 3: A Fase 3 é inicializada quando o jogador termina a Fase 2;  
 Vitória: Texto elogiando o jogador por ter conseguido terminar o jogo, depois dessa tela o jogador volta para o Menu Principal. Essa tela só pode ser acessada se o jogador finalizar a Fase 3;  
 Derrota: Texto caçoando o jogador, depois dessa tela o jogador volta para o Menu Principal. Essa tela só pode ser acessada quando o jogador perde em uma fase.
-# Participantes
+# Participantes:
 ## Murilo Pantoja Carneiro
-[![github murilo](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/devmirilo)
+[![github murilo](https://camo.githubusercontent.com/e8608a6316b9d88ea49559b15837c90b1c14fb172ca6743b50150cd54f208e26/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3130303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465)](https://github.com/devmirilo)
 ## Pedro Lyra
-[![git hub pedro](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/perdolyra18)
+[![git hub pedro](https://camo.githubusercontent.com/e8608a6316b9d88ea49559b15837c90b1c14fb172ca6743b50150cd54f208e26/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3130303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465)](https://github.com/perdolyra18)
