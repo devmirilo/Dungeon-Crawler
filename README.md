@@ -33,4 +33,6 @@ Vitória: Texto elogiando o jogador por ter conseguido terminar o jogo, depois d
 Derrota: Texto caçoando o jogador, depois dessa tela o jogador volta para o Menu Principal. Essa tela só pode ser acessada quando o jogador perde em uma fase.
 # Participantes
 ## Murilo Pantoja Carneiro
-[![githubmurilo](https://www.google.com/imgres?q=github%20imagem&imgurl=https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A1125%2F0*CpxR8zt1z6vZDorB.png&imgrefurl=https%3A%2F%2Fmedium.com%2F%40julia.maschion%2Fprimeiros-passos-com-git-e-github-ad24c574418e&docid=fL_ZtvEFqsr_xM&tbnid=1u5y9vZ_6x64eM&vet=12ahUKEwjI5IWn1vyFAxWwLLkGHaOCBpcQM3oECEwQAA..i&w=1125&h=417&hcb=2&ved=2ahUKEwjI5IWn1vyFAxWwLLkGHaOCBpcQM3oECEwQAA)](https://github.com/devmirilo)]
+[![github murilo](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/devmirilo)]
+## Pedro Lyra
+[![git hub pedro](https://t2.tudocdn.net/510706?w=646&h=284)](https://github.com/perdolyra18)]
