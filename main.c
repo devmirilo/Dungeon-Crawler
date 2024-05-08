@@ -195,9 +195,6 @@ void jogar(){
 			int mov = getch();
 			//Movimentacao do jogador
 			if(mov == 'w'){
-				if(mapa1[x][y] == mapa1[xm][ym]){
-					vida--;
-				}
 				if(mapa1[x-1][y] != '*'){
 					if(((mapa1[x-1][y] == porta1) && (chave1_obtida == 0)) ||
 					   ((mapa1[x-1][y] == porta2) && (chave2_obtida == 0)) || 
@@ -221,13 +218,13 @@ void jogar(){
 					if((((mapa1[x+1][y] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x+1][y] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x+1][y] == mapa1[8][2]) && chave3_obtida == 0)) ){
 						mapa1[x+1][y] = '@';
 					}
+					if(mapa1[x][y] == mapa1[xm][ym]){
+					vida--;
+					}
 				}
 				system("cls");
 			}
 			else if(mov == 's'){
-				if(mapa1[x][y] == mapa1[xm][ym]){
-					vida--;
-				}
 				if(mapa1[x+1][y] != '*'){
 					if (((mapa1[x+1][y] == porta1) && (chave1_obtida == 0)) || 
 						((mapa1[x+1][y] == porta2) && (chave2_obtida == 0)) || 
@@ -251,13 +248,13 @@ void jogar(){
 					if((((mapa1[x-1][y] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x-1][y] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x-1][y] == mapa1[8][2]) && chave3_obtida == 0)) ){
 						mapa1[x-1][y] = '@';
 					}
+					if(mapa1[x][y] == mapa1[xm][ym]){
+					vida--;
+					}
 				}
 				system("cls");	
 			}
 			else if(mov == 'a'){
-				if(mapa1[x][y] == mapa1[xm][ym]){
-						vida--;
-				}
 				if (mapa1[x][y-1] != '*'){
 					if (((mapa1[x][y-1] == porta1) && (chave1_obtida == 0)) || 
 						((mapa1[x][y-1] == porta2) && (chave2_obtida == 0)) || 
@@ -281,13 +278,13 @@ void jogar(){
 					if((((mapa1[x][y+1] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x][y+1] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x][y+1] == mapa1[8][2]) && chave3_obtida == 0)) ){
 						mapa1[x][y+1] = '@';
 					}
+					if(mapa1[x][y] == mapa1[xm][ym]){
+						vida--;
+					}
 				}
 				system("cls");
 			}  
 			else if(mov == 'd'){
-				if(mapa1[x][y] == mapa1[xm][ym]){
-						vida--;
-				}
 				if(mapa1[x][y+1] != '*'){
 					if (((mapa1[x][y+1] == porta1) && (chave1_obtida == 0)) || 
 						((mapa1[x][y+1] == porta2) && (chave2_obtida == 0)) || 
@@ -310,6 +307,9 @@ void jogar(){
 					}
 					if((((mapa1[x][y-1] == mapa1[1][8]) && chave1_obtida == 0) || ((mapa1[x][y-1] == mapa1[2][1]) && chave2_obtida == 0) || ((mapa1[x][y-1] == mapa1[8][2]) && chave3_obtida == 0)) ){
 						mapa1[x][y-1] = '@';
+					}
+					if(mapa1[x][y] == mapa1[xm][ym]){
+						vida--;
 					}
 				}
 				system("cls");
@@ -347,9 +347,9 @@ void jogar(){
 				chave3_obtida = 1;
 				system("cls");
 			}
-			else if (vida == 0){
+			if (vida == 0){
 				printf("Voce morreu.");
-				return;
+				return menu();
 			}
 			if(mov == 't' && (mapa1[x][y] == mapa1[9][1])){
 				fase2();
