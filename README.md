@@ -10,7 +10,7 @@ W: O jogador movimenta uma unidade para cima;
 A: O jogador movimenta uma unidade para esquerda;  
 S: O jogador movimenta uma unidade para baixo;  
 D: O jogador movimenta uma unidade para direita;  
-I: O jogador interage com o objeto que está em cima;  
+t: O jogador interage com o objeto que está em cima;  
 O jogo possui os seguintes elementos nas fases:  
 &: Símbolo que representa o jogador.  
 *: Símbolo que representa uma parede, o jogador ao se movimentar não pode passar pela parede.  
