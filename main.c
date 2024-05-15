@@ -56,7 +56,7 @@ void menu() {
         getchar();
         if (menu1 == '1') {
             system("color 4");
-            fase2();
+            fase1();
         } else if (menu1 == '2') {
             tutorial();
         } else if (menu1 == '3') {
