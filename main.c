@@ -656,8 +656,12 @@ void fase2(){
             chave3_obtida = 0;
             mapa2[9][17] = '@';
             mapa2[7][19] = 'D';
+            mapa2[xm][ym] = ' ';
+            mapa2[xm2][ym2] = ' ';
             xm = 9;
             ym = 8;
+            xm2 = 16;
+            ym2 = 9;
             system("cls");
         }
         if (x == xm && y == ym){
@@ -676,8 +680,12 @@ void fase2(){
             chave3_obtida = 0;
             mapa2[9][17] = '@';
             mapa2[7][19] = 'D';
+            mapa2[xm][ym] = ' ';
+            mapa2[xm2][ym2] = ' ';
             xm = 9;
             ym = 8;
+            xm2 = 16;
+            ym2 = 9;
             getch();
             system("cls");
         }
@@ -697,10 +705,14 @@ void fase2(){
             chave3_obtida = 0;
             mapa2[9][17] = '@';
             mapa2[7][19] = 'D';
+            mapa2[xm][ym] = ' ';
+            mapa2[xm2][ym2] = ' ';
             xm = 9;
             ym = 8;
+            xm2 = 16;
+            ym2 = 9;
             getch();
-           
+        }
         if (vida == 0){
             morte();
         }
