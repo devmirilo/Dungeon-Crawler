@@ -82,11 +82,12 @@ void vitoria() {
     system("cls");
     system("color 07");
     printf("\n\n");
-    printf("\t\t\t\t\t\t       > #       #  ###  ########     ###     ######     ###       ###         <\n");
+    printf(VERDE"\t\t\t\t\t\t       > #       #  ###  ########     ###     ######     ###       ###         <\n");
     printf("\t\t\t\t\t\t       > ##     ##          ###     ##   ##   ##   ##             ## ##        <\n");
     printf("\t\t\t\t\t\t       >  ##   ##   ###     ###    ##     ##  ######     ###     ##   ##       <\n");
     printf("\t\t\t\t\t\t       >   ## ##    ###     ###     ##   ##   ##   ##    ###    #########      <\n");
-    printf("\t\t\t\t\t\t       >    ###     ###     ###       ###     ##    ##   ###   ##       ##     <\n");
+    printf("\t\t\t\t\t\t       >    ###     ###     ###       ###     ##    ##   ###   ##       ##     <\n"RESET);
+    printf("\t\t\t\t\t\t                          Obrigado por jogar, novos jogos em breve!             ");
     getch();
     exit(0);
 }
@@ -114,6 +115,7 @@ void morte(){
     printf(        "\t\t\t\t\t\t       > ##   ##   ##   ##   ##   ##   ##   ##   ##        ##   ##    <\n");
     printf(        "\t\t\t\t\t\t       > ##   ##     ###     ##    ##  ##    ##  #######   #######    <\n\n\n"RESET);
     printf(        "\t\t\t\t\t\t            Pressione qualquer tecla para voltar para o comeco!!");
+    vida = 3;
     getch();
     return menu();
 }
@@ -1100,7 +1102,7 @@ void fase3(){
             mapa3[15][10] = 'O';
             chave1_obtida = 0;
             mapa3[23][25] = 'D';
-            mapa3[18][23] = ' ';
+            mapa3[18][23] = '@';
             chave2_obtida = 0;
             mapa3[12][39] = 'D';
             mapa3[15][33] = '@';
@@ -1126,7 +1128,7 @@ void fase3(){
             mapa3[15][10] = 'O';
             chave1_obtida = 0;
             mapa3[23][25] = 'D';
-            mapa3[18][23] = ' ';
+            mapa3[18][23] = '@';
             chave2_obtida = 0;
             mapa3[12][39] = 'D';
             mapa3[15][33] = '@';
@@ -1152,7 +1154,7 @@ void fase3(){
             mapa3[15][10] = 'O';
             chave1_obtida = 0;
             mapa3[23][25] = 'D';
-            mapa3[18][23] = ' ';
+            mapa3[18][23] = '@';
             chave2_obtida = 0;
             mapa3[12][39] = 'D';
             mapa3[15][33] = '@';
